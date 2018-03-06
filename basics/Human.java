@@ -1,3 +1,5 @@
+package basics;
+
 public class Human {
     public static void walk() {
         System.out.println("Human walks");
@@ -8,7 +10,7 @@ public class Human {
     }
 
     private void sleep() {
-        System.out.println("Human Sleep");
+        System.out.println("Human Sleeps");
     }
 
 }
