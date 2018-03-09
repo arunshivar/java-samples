@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Servlet1</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+    <script language="JavaScript">
+        function validate() {
+            if(document.form.name.value == '') {
+                alert("Enter name");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="row">
+    <div class="center">
+        <form name="form" action="/servlet1" method="POST"  onSubmit='return validate()'>
+            <input type="text" name="name" placeholder="Enter name">
+            <input type='submit' value='Forward'>
+        </form>
+    </div>
+</div>
+</body>
+</html>
