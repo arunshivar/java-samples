@@ -16,8 +16,6 @@ public class DBConnection {
     }
     Connection connection = null;
     public Connection getConnection() {
-        System.out.println("-------- PostgreSQL ------------");
-
         try {
 
             Class.forName("org.postgresql.Driver");

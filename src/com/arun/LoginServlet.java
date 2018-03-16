@@ -19,7 +19,6 @@ public class LoginServlet extends HttpServlet {
             preparedStatement.setString(1,request.getParameter("username"));
             preparedStatement.setString(2,request.getParameter("password"));
             ResultSet resultSet = preparedStatement.executeQuery();
-
             if(resultSet.next()) {
                 String role = resultSet.getString("role");
                 if(role == "admin") {
