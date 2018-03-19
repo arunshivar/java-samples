@@ -1,7 +1,5 @@
-
+import com.arun.CheckUserName;
 import com.arun.DBConnection;
-import com.arun.LoginServlet;
-import junit.framework.TestCase;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
@@ -10,16 +8,17 @@ import org.mockito.MockitoAnnotations;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.mockingDetails;
 import static org.mockito.Mockito.when;
 
+public class TestCheckUserName {
 
-public class TestLoginServlet extends TestCase {
 
     @Mock
     HttpServletRequest request;
@@ -30,7 +29,7 @@ public class TestLoginServlet extends TestCase {
     RequestDispatcher requestDispatcher;
 
     @Before
-    protected void setUp() throws Exception {
+    public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
     }
 
@@ -40,18 +39,18 @@ public class TestLoginServlet extends TestCase {
         PreparedStatement preparedStatement = mock(PreparedStatement.class);
         Connection connection = mock(Connection.class);
         ResultSet resultSet = mock(ResultSet.class);
+        PrintWriter out = mock(PrintWriter.class);
         when(preparedStatement.executeQuery()).thenReturn(resultSet);
 
         DBConnection dbConnection = mock(DBConnection.class);
         when(dbConnection.getConnection()).thenReturn(connection);
+        when(response.getWriter()).thenReturn(out);
 
-        when(request.getParameter("password")).thenReturn("admin");
-        when(request.getParameter("username")).thenReturn("admin");
-        new LoginServlet().doPost(request,response);
-        // verify(response).sendRedirect("/adminConsole.jsp");
+        when(request.getParameter("q")).thenReturn("rocko");
+        new CheckUserName().doGet(request,response);
 
-        when(request.getParameter("password")).thenReturn("Rocky");
-        when(request.getParameter("username")).thenReturn("123456");
-        new LoginServlet().doPost(request,response);
+        when(request.getParameter("q")).thenReturn("admin");
+        new CheckUserName().doGet(request,response);
     }
+
 }
