@@ -9,10 +9,14 @@
 <html>
 <head>
     <title>Welcome</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/application.css" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-    <h1>Welcome</h1>
+<div class="content-wrapper">
+    <div class="container">
+        <h1>Welcome</h1>
+    </div>
 </div>
 </body>
 </html>
