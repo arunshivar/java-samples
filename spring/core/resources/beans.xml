@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+    <bean id="emailService" class="spring.core.beans.EmailService">
+        <property name="student" ref="studentBean"></property>
+    </bean>
+
+    <bean id="studentBean" class="spring.core.beans.Student" scope="singleton">
+        <property name="name" value="Arun Shiva"></property>
+    </bean>
+
+    <bean id="studentBean1" class="spring.core.beans.Student">
+        <property name="name" value="Ram"></property>
+    </bean>
+    <!-- LifeCycleBean no-arg constructor -->
+    <bean id="lifeCycleBean" class="spring.core.beans.LifeCycleBean"></bean>
+
+    
+    <bean id="lifeCycleBean1" class="spring.core.beans.LifeCycleBean">
+        <constructor-arg>
+            <ref bean="studentBean"/>
+        </constructor-arg>
+        <constructor-arg value="10" type="int"></constructor-arg>
+    </bean>
+
+    <bean id="lifeCycleBean2" class="spring.core.beans.LifeCycleBean">
+        <property name="student" ref="studentBean"></property>
+    </bean>
+
+    <bean id="lifeCycleBean3" class="spring.core.beans.LifeCycleBean" init-method = "init"
+          destroy-method = "myDestroy">
+        <constructor-arg>
+            <ref bean="studentBean"/>
+        </constructor-arg>
+        <property name="student" ref="studentBean1"></property>
+    </bean>
+
+    <!-- Injection with collection  -->
+    <bean id="question" class="spring.core.beans.Question">
+        <constructor-arg value="01"></constructor-arg>
+        <constructor-arg value="What is spring?"></constructor-arg>
+        <constructor-arg>
+            <list>
+                <value>Spring is frame work.</value>
+                <value>Spring is a bean.</value>
+                <value>Spring is a Library</value>
+            </list>
+        </constructor-arg>
+
+        <property name="id" value="2"></property>
+        <property name="question" value="What is Bean?"></property>
+        <property name="answers">
+            <list>
+                <value>Bean is a programming language</value>
+                <value>Bean is a platform</value>
+                <value>Bean is an Island</value>
+            </list>
+        </property>
+    </bean>
+</beans>
