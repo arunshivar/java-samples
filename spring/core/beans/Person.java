@@ -3,6 +3,7 @@ package spring.core.beans;
 public class Person {
     int id;
     String name;
+    String country;
 
     public Person() {
     }
@@ -26,5 +27,22 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", country='" + country + '\'' +
+                '}';
     }
 }

@@ -19,7 +19,7 @@
     <!-- LifeCycleBean no-arg constructor -->
     <bean id="lifeCycleBean" class="spring.core.beans.LifeCycleBean"></bean>
 
-    
+
     <bean id="lifeCycleBean1" class="spring.core.beans.LifeCycleBean">
         <constructor-arg>
             <ref bean="studentBean"/>
@@ -60,5 +60,15 @@
                 <value>Bean is an Island</value>
             </list>
         </property>
+    </bean>
+    
+    
+    <bean id="parentPersonBean" class="spring.core.beans.Person">
+        <property name="country" value="INDIA"></property>
+    </bean>
+
+    <bean id="childPersonBean" class="spring.core.beans.Person" parent="parentPersonBean">
+        <property name="id" value="10"></property>
+        <property name="name" value="Arun"></property>
     </bean>
 </beans>
