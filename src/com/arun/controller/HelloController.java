@@ -1,4 +1,4 @@
-package com.arun;
+package com.arun.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
