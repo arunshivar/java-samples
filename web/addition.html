@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Addition</title>
+    <script language="JavaScript">
+        function validate() {
+            if(document.form.firstNumber.value == '') {
+                alert("First Number can not be empty");
+                return false;
+            }
+            else if(document.form.secondNumber.value == '') {
+                alert("Second Number can not be empty");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+<a href='/hello'>Hello</a>
+<a href='/params'>Params Demo</a>
+<center>
+<form name="form" action="/add" method="POST"  onSubmit='return validate()'>
+    First Number: <input type="number" name="firstNumber"><br>
+    Second Number: <input type="number" name="secondNumber"><br>
+    <input type='submit' value='Add'>
+</form>
+</center>
+
+
+</body>
+</html>

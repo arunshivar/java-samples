@@ -1,0 +1,11 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>2.0</jsp-version>
+    <short-name>Dt</short-name>
+
+    <tag>
+        <name>myDate</name>
+        <tag-class>com.arun.DateTag</tag-class>
+        <body-content>empty</body-content>
+    </tag>
+</taglib>
