@@ -2,14 +2,18 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
 <head>
-    <title>Spring MVC Crud</title>
+    <title><spring:message code="index.title"/></title>
 </head>
 <body>
+<%--<a href="?lang=en">en</a><a href="?lang=de">de</a>--%>
+
     <p>
-        <a href="empform">Add Employee</a>
+        <a href="empform"><spring:message code="label.addEmployee"/></a>
     </p>
     <p>
-        <a href="viewemp">View Employees</a>
+        <a href="viewemp"><spring:message code="label.viewEmployees"/></a>
     </p>
+
+Current Locale : ${pageContext.response.locale}
 </body>
 </html>
