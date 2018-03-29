@@ -1,5 +1,6 @@
 package com.arun;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,9 @@ import java.util.List;
 
 @Controller
 public class EmployeeController {
+
+    @Autowired
+    EmployeeDAO employeeDAO;//will inject dao from xml file
 
     static List<Employee> list=new ArrayList<Employee>();
     static {
@@ -28,8 +32,14 @@ public class EmployeeController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public ModelAndView saveEmployee(@ModelAttribute("employee") Employee employee) {
-        System.out.println(employee.getName()+" "+employee.getSalary());
-        list.add(new Employee(list.size(), employee.getName(), employee.getSalary(), employee.getDesignation()));
+        // System.out.println(employee.getName()+" "+employee.getSalary());
+        try {
+            employeeDAO.save(employee);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // list.add(new Employee(list.size(), employee.getName(), employee.getSalary(), employee.getDesignation()));
         return new ModelAndView("redirect:/viewemp");
     }
 
@@ -39,11 +49,7 @@ public class EmployeeController {
 
         System.out.println(" in view emp");
 
-
-        /*ModelAndView model = new ModelAndView();
-        model.setViewName("viewemp");
-        model.addObject("msg", "HELLO");
-        return model;*/
+        List<Employee> list = employeeDAO.getEmployees();
 
         return new ModelAndView("viewemp","list", list);
     }
